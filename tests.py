@@ -1,5 +1,6 @@
 #тесты, которые импортируются в основном коде
 import math
+import pytest
 from main import solve_quadratic
 
 def test_solve_quadratic_two_real_roots():
@@ -20,3 +21,7 @@ def test_solve_quadratic_complex_roots():
     
     # Сравниваем без сортировки - порядок не важен для корней
     assert set(result) == set(expected)
+def test_solve_quadratic_a_zero():
+    """Тест вызова исключения при a = 0"""
+    with pytest.raises(ValueError, match="Коэффициент 'a' не может быть равен нулю"):
+        solve_quadratic(0, 1, 2)
