@@ -25,3 +25,10 @@ def test_solve_quadratic_a_zero():
     """Тест вызова исключения при a = 0"""
     with pytest.raises(ValueError, match="Коэффициент 'a' не может быть равен нулю"):
         solve_quadratic(0, 1, 2)
+def test_invalid_coefficients():
+    # a = 0 должно вызывать исключение
+    with pytest.raises(ValueError):
+        solve_quadratic(0, 2, 3)  
+    # Нечисловые коэффициенты
+    with pytest.raises(TypeError):
+        solve_quadratic("a", 2, 3)

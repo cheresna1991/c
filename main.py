@@ -6,6 +6,9 @@ def solve_quadratic(a, b, c):
     Решает квадратное уравнение ax² + bx + c = 0.
     Возвращает кортеж с корнями.
     """
+    if not all(isinstance(x, (int, float)) for x in [a, b, c]):
+        raise TypeError("Все коэффициенты должны быть числами")
+    
     if a == 0:
         raise ValueError("Коэффициент 'a' не может быть равен нулю")
     
